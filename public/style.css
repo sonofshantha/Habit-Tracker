@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: linear-gradient(to right, green, lightgreen);
+     color: white; /* Optional: to make the text stand out */
+  }
+  
+  h1 {
+    color: #333;
+  }
+  form {
+    margin-bottom: 20px;
+  }
+  input[type="text"]{
+    padding: 8px;
+    margin-right: 10px;
+    width: 70%;
+  }
+  input[type="date"], select {
+    padding: 8px;
+    margin-right: 10px;
+    background-color: bisque;
+  }
+  
+  button {
+    padding: 8px 12px;
+    width: 20vw;
+    border-radius: 5px;
+    color: brown;
+    background-color: bisque;
+    box-shadow: 1px 1px black;
+    margin-left: 1%;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 10px 0;
+  }
+table{
+  margin: 20px auto;
+  background-color: cornsilk;
+  width: 73vw;
+  height: 17vh;
+}
+  td{
+    background-color: antiquewhite;
+  }
+  table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+thead th:nth-child(odd) {
+    background-color: burlywood;
+}
+thead th:nth-child(even) {
+    background-color: cadetblue;
+}

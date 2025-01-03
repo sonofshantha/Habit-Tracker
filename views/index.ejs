@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Habit Tracker</h1>
+  <form action="/habits/add" method="POST">
+    <input type="text" name="name" placeholder="Add new habit" required>
+    <button type="submit">Add Habit</button>
+  </form>
+
+  <h2>Your Habits</h2>
+  <ul>
+    <% concatVal.forEach(habit => { %>
+      <li>
+        <a href="/status/<%= habit.habit._id %>"><button><%= habit.habit.name %></button></a>
+        <table>
+            <thead>
+              <tr>
+                <% habit.statuses.forEach(status => { %> 
+                    <th>
+                        <%= status.date.toLocaleDateString('en-US',{
+                        day: 'numeric',
+                        month: 'long',
+                      }) %></th>
+                <!-- <th>Status</th> -->
+                <% }); %>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+              <% habit.statuses.forEach(status => { %>
+               
+                <td style="background-color: <%= status.status === 'Done' ? 'green' : (status.status === 'Not Done' ? 'red' : 'antiquewhite') %>;">
+                  <%= status.status %>
+                </td>
+               
+              <% }); %>
+            </tr>
+            </tbody>
+          </table>
+      </li>
+      <hr>
+    <% }); %>
+  </ul>
+</body>
+</html>

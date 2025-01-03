@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= habit.name %> Status</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1><%= habit.name %> - 7 Days Status</h1>
+  <form action="/status/update" method="POST">
+    <input type="hidden" name="habitId" value="<%= habit._id %>">
+    <input type="date" name="date" value="<%= new Date().toISOString().split('T')[0] %>">
+    <select name="status">
+      <option value="Done">Done</option>
+      <option value="Not Done">Not Done</option>
+      <option value="None">None</option>
+    </select>
+    <button type="submit">Update Status</button>
+  </form>
+
+  <h2>Previous 6 Days</h2>
+  <table>
+    <thead>
+      <tr>
+        <% statuses.forEach(status => { %> 
+            <th>
+                <%= status.date.toLocaleDateString('en-US',{
+                day: 'numeric',
+                month: 'long',
+              }) %></th>
+        <!-- <th>Status</th> -->
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+      <% statuses.forEach(status => { %>
+       
+        <td style="background-color: <%= status.status === 'Done' ? 'green' : (status.status === 'Not Done' ? 'red' : 'antiquewhite') %>;">
+          <%= status.status %>
+        </td>
+       
+      <% }); %>
+    </tr>
+    </tbody>
+  </table>
+</body>
+</html>
